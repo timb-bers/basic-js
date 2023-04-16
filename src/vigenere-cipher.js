@@ -41,12 +41,10 @@ class VigenereCipheringMachine {
       result += this.alphabet[(this.alphabet.indexOf(message[i]) + this.alphabet.indexOf(key[index++ % key.length])) % this.alphabet.length];
     }
     return this.value ? result : result.split('').reverse().join('');
-
   }
 
   decrypt(message, key) {
     if (!message || !key) throw new Error('Incorrect arguments!');
-    
     let index = 0;
     let result = '';
     message = message.toUpperCase();
@@ -59,10 +57,9 @@ class VigenereCipheringMachine {
       }
 
       let decrypt = this.alphabet.indexOf(message[i]) - this.alphabet.indexOf(key[index++ % key.length]) % this.alphabet.length;
-      if (decrypt >= 0)
-        result += this.alphabet[decrypt];  
-      else
-        result += this.alphabet[this.alphabet.length + decrypt];
+      if (decrypt >= 0) result += this.alphabet[decrypt];  
+      else result += this.alphabet[this.alphabet.length + decrypt];
+      
     }
     return this.value ? result : result.split('').reverse().join('');
   }
